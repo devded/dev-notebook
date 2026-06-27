@@ -56,3 +56,21 @@ response.set_cookie("user_theme", "dark", max_age=86400, secure=True, httponly=T
 # Read a cookie in a view
 theme = request.COOKIES.get("user_theme", "light")
 ```
+
+## What is the difference between AbstractBaseUser, AbstractUser, and Django's default User model? <Badge type="warning" text="medium" />
+
+* **Default User**: Out-of-the-box user model with fixed fields (username, first_name, last_name, email, password, is_staff, is_active). Difficult to customize later.
+* **AbstractUser**: Inherits all standard fields and permissions of default `User` but lets you extend it (e.g. adding a profile picture or age field) while keeping standard authentication flow.
+* **AbstractBaseUser**: Provides only password hashing and auth methods, offering complete control over the fields. Useful when removing standard fields like `username` (e.g., using `email` as the primary identifier).
+
+```python
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db import models
+
+class CustomUser(AbstractBaseUser):
+    email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
+    
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+```

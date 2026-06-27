@@ -59,3 +59,20 @@ Middleware is a framework of hooks that plug into Django's request/response proc
 ## What are static files in Django and how are they managed? <Badge type="tip" text="easy" />
 
 Static files are assets that do not change dynamically, such as CSS, JavaScript, images, and fonts. Django manages them using the `django.contrib.staticfiles` app. In development, Django serves them automatically. In production, developers run `python manage.py collectstatic` to gather all static assets into a single directory configured by `STATIC_ROOT`, which is then served by a web server (like Nginx) or a CDN.
+
+## How do you create and register custom middleware in Django? <Badge type="warning" text="medium" />
+
+Middleware is written as a class that accepts `get_response` in its constructor and defines a `__call__` method to process requests and responses:
+
+```python
+class ExecutionTimerMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # 1. Runs before request reaches the view
+        response = self.get_response(request)
+        # 2. Runs after response leaves the view
+        return response
+```
+Register it by appending its import path to the `MIDDLEWARE` list in `settings.py`.

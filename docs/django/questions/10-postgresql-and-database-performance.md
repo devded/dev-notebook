@@ -56,3 +56,20 @@ DATABASES = {
     }
 }
 ```
+
+## How do you configure and manage multiple databases in a Django application? <Badge type="danger" text="hard" />
+
+Define connection profiles in the `DATABASES` setting dictionary and write a custom database router to dictate where reads, writes, and migrations occur:
+
+```python
+# settings.py
+DATABASES = {
+    "default": {"ENGINE": "django.db.backends.postgresql", "NAME": "db_main"},
+    "analytics": {"ENGINE": "django.db.backends.postgresql", "NAME": "db_analytics"}
+}
+```
+Use the `.using()` QuerySet method for ad-hoc database selection:
+```python
+# Force a write/read on the analytics DB
+LogEntry.objects.using("analytics").create(action="login")
+```
