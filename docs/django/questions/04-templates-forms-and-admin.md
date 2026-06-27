@@ -39,3 +39,18 @@ Admin actions are bulk operations users can execute on selected rows. They are u
 ## How can forms help security beyond validation?
 
 Forms centralize input parsing, type conversion, validation, error reporting, and cleaned_data access. They reduce the chance of trusting raw request.POST and help prevent invalid or malicious input from reaching business logic.
+
+## What is Jinja2 templating, and does Django support it? <Badge type="warning" text="medium" />
+
+Jinja2 is a fast, secure, and widely used third-party templating engine for Python. While Django has its own default template language (DTL), it officially supports Jinja2 as an alternative engine. Jinja2 provides benefits like sandbox execution, higher rendering performance, and easier debugging compared to DTL.
+
+## What are context processors in Django? <Badge type="warning" text="medium" />
+
+A context processor is a python function that accepts a request object and returns a dictionary of data to be merged into the template context. This makes common data (such as user details, site settings, or cart counts) globally available across all templates without passing them explicitly from every view.
+
+## How does Django encourage clean and reusable templates? <Badge type="tip" text="easy" />
+
+Django supports modular layouts through several features:
+* **Template Inheritance (`{% extends %}`)**: Defines a master layout (like `base.html`) containing common headers and footers that child templates extend.
+* **Block tags (`{% block %}`)**: Allow child templates to override specific content sections.
+* **Include tag (`{% include %}`)**: Injects smaller reusable UI fragments (like a sidebar or navbar) across multiple pages.

@@ -39,3 +39,22 @@ Indexes speed up reads for filters, joins, ordering, uniqueness, and lookup-heav
 ## What is a custom model manager?
 
 A custom manager adds domain-specific query entry points, such as active(), visible_to(user), or for_tenant(tenant). It keeps query construction reusable and avoids scattering filtering rules across views.
+
+## What is NoSQL, and does Django officially support NoSQL databases? <Badge type="warning" text="medium" />
+
+NoSQL databases store data in non-tabular formats (such as documents or key-value pairs) rather than relational tables. Django's built-in ORM is designed specifically for relational databases (like PostgreSQL, MySQL, and SQLite) and does not officially support NoSQL databases. Implementing NoSQL in Django requires third-party ORMs/wrappers (like Djongo for MongoDB) or accessing the NoSQL database directly using native Python drivers.
+
+## What are the model inheritance styles supported by Django? <Badge type="warning" text="medium" />
+
+Django supports three model inheritance styles:
+1. **Abstract Base Classes**: Used when sharing common fields and behaviors in Python code without creating a database table for the base model.
+2. **Multi-table Inheritance**: Creates separate database tables for both parent and child models, linked by an implicit one-to-one relationship.
+3. **Proxy Models**: Modifies python-level behavior or default manager of a model without modifying its database table structure.
+
+## What is the difference between CharField and TextField in Django models? <Badge type="tip" text="easy" />
+
+`CharField` is for short-to-medium string fields (e.g., names or URLs), requires a `max_length` parameter, and maps to `VARCHAR` database columns. `TextField` is for large or unbounded text (e.g., descriptions or body text), doesn't require `max_length`, and maps to `TEXT` or `CLOB` database columns.
+
+## What are Django signals, and when should they be used? <Badge type="warning" text="medium" />
+
+Signals allow decoupled applications to get notified when actions occur elsewhere in the framework. Django provides built-in signals like `post_save`, `pre_save`, `post_delete`, and `pre_delete` that trigger receiver functions when model instances are modified. They should be used for cross-app coordination (e.g., creating a user profile whenever a new user is created), but avoided for core database updates because they can make code flow harder to trace and debug.

@@ -39,3 +39,21 @@ Q objects build complex WHERE conditions with OR, AND, and NOT logic. They are u
 ## How do values() and values_list() differ from normal QuerySets?
 
 Normal QuerySets return model instances. values() returns dictionaries, and values_list() returns tuples or flat values. They reduce overhead when you only need selected fields, but you lose model methods and instance behavior.
+
+## What are the common Django exception classes and their purposes? <Badge type="warning" text="medium" />
+
+Django has built-in exception classes for handling database and framework-level errors:
+* `ObjectDoesNotExist` / `DoesNotExist`: Raised when a single-object query (like `get()`) yields no results.
+* `MultipleObjectsReturned`: Raised when a single-object query yields more than one match.
+* `ValidationError`: Raised when validation fails on a form, serializer, or model field.
+* `PermissionDenied`: Raised when a user lacks authorized permissions for an action.
+* `SuspiciousOperation`: Raised when an incoming request contains suspicious data indicative of a security threat.
+
+## How do you exclude database records matching a condition in Django ORM? <Badge type="tip" text="easy" />
+
+Use the `.exclude()` method on a QuerySet, which acts as the inverse of `.filter()`. It generates a query that filters out all matching records.
+
+```python
+# Fetch all active users except staff members
+users = User.objects.filter(is_active=True).exclude(is_staff=True)
+```
