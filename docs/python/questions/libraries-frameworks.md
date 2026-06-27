@@ -1,7 +1,7 @@
 # Libraries & Frameworks
 
 > Add new questions below in the same format: `## Question? <Badge ... />` then the answer.
-> For full tutorials, see [Django](../django) and [Flask](../flask).
+> For full tutorials, see [Django](/django/) and [Flask](/flask/tutorial).
 
 ## What are the key features of Flask? <Badge type="warning" text="medium" />
 

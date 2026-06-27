@@ -6,8 +6,8 @@ Notes, interview prep, and framework tutorials for Python.
 
 - [Cheatsheet](./cheatsheet) — quick syntax reference of core language features.
 - [Interview Questions](./questions/) — common Q&A grouped by topic.
-- [Django](./django) — web framework tutorial notes.
-- [Flask](./flask) — micro-framework tutorial notes.
+- [Django](/django/) — web framework tutorial notes.
+- [Flask](/flask/tutorial) — micro-framework tutorial notes.
 
 ## Quick facts
 
