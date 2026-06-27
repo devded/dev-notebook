@@ -1,12 +1,13 @@
 # Java
 
-Notes, interview prep, and framework tutorials for Java.
+Notes and interview prep for the Java language.
 
 ## Sections
 
 - [Cheatsheet](./cheatsheet) — quick syntax reference of core language features.
 - [Interview Questions](./questions/) — common Q&A grouped by topic.
-- [Spring Boot](/spring-boot/tutorial) — framework tutorial notes.
+
+> Java frameworks have their own sections: [Spring Boot](/spring-boot/).
 
 ## Quick facts
 
