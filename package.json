@@ -1,0 +1,17 @@
+{
+  "name": "dev-notebook",
+  "version": "1.0.0",
+  "description": "Developer notebook — interview cheatsheets & framework tutorials",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}
