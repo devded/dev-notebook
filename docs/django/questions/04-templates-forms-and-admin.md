@@ -92,4 +92,16 @@ def current_year():
     return datetime.now().year
 ```
 4. Load the library in your template using `{% load my_custom_tags %}` and use the custom tags/filters.
+
+## What is the django.contrib.messages framework and how does it work? <Badge type="tip" text="easy" />
+
+The messages framework stores temporary, flash notifications (like success alerts or error messages) in one request and retrieves them for display in a subsequent request (typically after a POST redirect). It supports different storage backends (cookie-based or session-based) and categorizes messages by level (DEBUG, INFO, SUCCESS, WARNING, ERROR).
+
+```python
+from django.contrib import messages
+from django.shortcuts import redirect
+
+def my_view(request):
+    messages.success(request, "Profile updated successfully.")
+    return redirect("profile-detail")
 ```

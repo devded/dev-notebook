@@ -39,3 +39,9 @@ Signals are useful for decoupled framework events, but hidden business workflows
 ## How would you explain a major architectural decision in an interview?
 
 State the context, constraints, options considered, trade-offs, decision, consequences, and how you would revisit it. Big-company interviews value balanced reasoning more than one fashionable pattern.
+
+## What is the "Fat Model, Skinny View" design pattern and what are its pros and cons? <Badge type="warning" text="medium" />
+
+"Fat Model, Skinny View" is a design principle where business logic, data validation, and database operations are placed in model classes (or manager methods) rather than view functions.
+* **Pros**: Promotes code reusability (logic can be shared between views, admin actions, and shell scripts), makes testing database logic simpler, and keeps views clean and readable.
+* **Cons**: Can lead to bloated, monolithic model classes that are hard to maintain, violate the Single Responsibility Principle, and create circular dependency issues. Modern applications often delegate this logic to service layers or domain service classes.

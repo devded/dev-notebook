@@ -32,6 +32,23 @@ The Meta class configures model-level behavior such as ordering, indexes, constr
 
 Constraints enforce database-level rules such as uniqueness, conditional uniqueness, checks, and exclusions depending on backend support. They are important because application-level validation alone can fail under concurrency or multiple service entry points.
 
+```python
+from django.db import models
+
+class Booking(models.Model):
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    class Meta:
+        constraints = [
+            # Check constraint: end date must be after start date
+            models.CheckConstraint(
+                check=models.Q(end_date__gt=models.F("start_date")),
+                name="booking_dates_chronological"
+            )
+        ]
+```
+
 ## What are indexes and when should you add them?
 
 Indexes speed up reads for filters, joins, ordering, uniqueness, and lookup-heavy workloads. Add them based on query patterns and execution plans, not blindly, because indexes increase write cost and storage usage.

@@ -39,3 +39,21 @@ Use timeouts, retries with backoff, circuit breakers, idempotency, clear error s
 ## How would you design an API for both web and mobile clients?
 
 Use stable versioned endpoints, pagination, filtering, compact payloads, explicit error codes, backward compatibility, and authentication suitable for each client type. Avoid tying API design to one frontend's current screen layout.
+
+## What is HATEOAS and how do you implement it in Django REST Framework? <Badge type="danger" text="hard" />
+
+HATEOAS (Hypermedia as the Engine of Application State) is an API design principle where the server returns links to related actions and resources dynamically within responses. 
+In DRF, you implement HATEOAS by using `HyperlinkedModelSerializer` or injecting custom URI/link fields using `serializers.HyperlinkedIdentityField`:
+
+```python
+from rest_framework import serializers
+from .models import Article
+
+class ArticleSerializer(serializers.HyperlinkedModelSerializer):
+    # Generates a link to the detail view automatically
+    detail_url = serializers.HyperlinkedIdentityField(view_name="article-detail")
+
+    class Meta:
+        model = Article
+        fields = ["id", "title", "detail_url"]
+```

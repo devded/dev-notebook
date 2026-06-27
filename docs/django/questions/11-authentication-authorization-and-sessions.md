@@ -73,4 +73,31 @@ class CustomUser(AbstractBaseUser):
     
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+
+## How do you implement a custom authentication backend in Django? <Badge type="warning" text="medium" />
+
+Define a class that subclasses `django.contrib.auth.backends.ModelBackend` (or inherits from `object`) and implements the `authenticate(request, **credentials)` and `get_user(user_id)` methods:
+
+```python
+from django.contrib.auth.backends import BaseBackend
+from django.contrib.auth import get_user_model
+
+class EmailBackend(BaseBackend):
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        User = get_user_model()
+        try:
+            user = User.objects.get(email=username)
+            if user.check_password(password):
+                return user
+        except User.DoesNotExist:
+            return None
+
+    def get_user(self, user_id):
+        User = get_user_model()
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+```
+Register it in `settings.py` by adding it to the `AUTHENTICATION_BACKENDS` list.
 ```

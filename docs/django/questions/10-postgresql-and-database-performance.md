@@ -90,3 +90,23 @@ def search_articles(query_text):
     ).filter(rank__gte=0.3).order_by("-rank")
 ```
 For multi-engine setups, large data volumes, or advanced search features, teams typically integrate external search engines like Elasticsearch or Solr using Python integrations.
+
+## How do you create and configure a custom database backend in Django? <Badge type="danger" text="hard" />
+
+To connect Django to an unsupported database, you must build a custom database backend:
+1. Subclass `django.db.backends.base.base.BaseDatabaseWrapper`.
+2. Implement backend-specific wrappers by subclassing and overriding:
+   * `DatabaseFeatures`: Declares supported SQL capabilities.
+   * `DatabaseOperations`: Generates SQL syntax for date/time, limits, offsets, etc.
+   * `DatabaseSchemaEditor`: Generates DDL queries (CREATE TABLE, ALTER TABLE).
+   * `DatabaseClient`: Opens a command-line client connection.
+3. Register the backend in `settings.py` by referencing the module path in `ENGINE`:
+
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "my_app.db.backends.custom_db",
+        "NAME": "my_database",
+    }
+}
+```

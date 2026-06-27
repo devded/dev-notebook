@@ -39,3 +39,7 @@ Use Django's localization utilities and avoid hardcoding date, number, and curre
 ## How would you test internationalization?
 
 Test language activation, translated templates, fallback behavior, locale-specific formatting, time-zone conversions, and API behavior where clients specify language or time zone.
+
+## What is the purpose of the django.contrib.sites framework in Django? <Badge type="tip" text="easy" />
+
+The `django.contrib.sites` framework associates database objects and configurations with specific domain websites. It allows a single Django installation to power multiple websites (e.g., `siteA.com` and `siteB.com`) by referencing the `SITE_ID` setting. For example, it is used by built-in frameworks to generate absolute URLs in emails, feed generators, or sitemaps targeting the active site.
