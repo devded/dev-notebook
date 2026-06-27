@@ -12,6 +12,24 @@ Django uses Model-Template-View. The Model represents data and business persiste
 
 The web server passes the request to WSGI or ASGI, Django creates an HttpRequest, middleware processes it, URL resolution maps it to a view, the view executes business logic, and returns an HttpResponse. Response middleware then runs before the server sends the response to the client.
 
+```mermaid
+graph TD
+    Client[Client Browser] -->|HTTP Request| WSGI[WSGI/ASGI Server]
+    WSGI -->|Middleware| Middleware1[Request Middleware]
+    Middleware1 -->|URL Matching| URLRouter[URL Router]
+    URLRouter -->|Matches View| View[View]
+    
+    subgraph Django MTV Architecture
+        View -->|Queries| Model[(Model / DB)]
+        View -->|Injects Context| Template[Template]
+    end
+    
+    Template -->|Returns HTML| View
+    View -->|HttpResponse| Middleware2[Response Middleware]
+    Middleware2 --> WSGI
+    WSGI -->|HTTP Response| Client
+```
+
 ## What are the main strengths and weaknesses of Django compared with Flask or FastAPI?
 
 Django is stronger for full product backends because it includes ORM, admin, auth, security, forms, migrations, and conventions. Flask and FastAPI are lighter and can be better for small services or async-first APIs. In large companies the choice depends on team skill, governance, lifecycle cost, and service boundaries.

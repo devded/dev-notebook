@@ -74,6 +74,18 @@ Use the `.using()` QuerySet method for ad-hoc database selection:
 LogEntry.objects.using("analytics").create(action="login")
 ```
 
+```mermaid
+graph TD
+    Query[Incoming DB Query] --> Choice{Model type?}
+    Choice -->|Analytics / Logs| RouteAnalytics[Route to analytics DB]
+    Choice -->|Standard CRUD| RouteDefault[Route to default DB]
+    
+    subgraph Custom Database Router
+        RouteAnalytics --> AnalyticsDB[(Analytics PostgreSQL)]
+        RouteDefault --> DefaultDB[(Default PostgreSQL)]
+    end
+```
+
 ## How do you implement full-text search in a Django application? <Badge type="warning" text="medium" />
 
 If using PostgreSQL, Django has built-in integration through the `django.contrib.postgres.search` module. It exposes `SearchVector` (for multi-column indexing), `SearchQuery` (for user term parsing), and `SearchRank` (for relevance scoring).

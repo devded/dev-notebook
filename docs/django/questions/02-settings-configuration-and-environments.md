@@ -76,3 +76,23 @@ class ExecutionTimerMiddleware:
         return response
 ```
 Register it by appending its import path to the `MIDDLEWARE` list in `settings.py`.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client
+    participant MW_Security as Security Middleware
+    participant MW_Session as Session Middleware
+    participant MW_Auth as Authentication Middleware
+    participant View as Django View
+
+    Client->>MW_Security: Request
+    MW_Security->>MW_Session: Request
+    MW_Session->>MW_Auth: Request
+    MW_Auth->>View: Request
+    
+    View->>MW_Auth: Response
+    MW_Auth->>MW_Session: Response
+    MW_Session->>MW_Security: Response
+    MW_Security->>Client: Response
+```

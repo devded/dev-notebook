@@ -100,4 +100,12 @@ class EmailBackend(BaseBackend):
             return None
 ```
 Register it in `settings.py` by adding it to the `AUTHENTICATION_BACKENDS` list.
+
+```mermaid
+graph TD
+    Login[Authentication Triggered] --> Backend1{Check Backend 1?}
+    Backend1 -->|Matches Credentials| ReturnUser[Return User & Authenticate]
+    Backend1 -->|Fails / Returns None| Backend2{Check Backend 2?}
+    Backend2 -->|Matches Credentials| ReturnUser
+    Backend2 -->|Fails / Returns None| Fail[Raise Authentication Failure]
 ```
