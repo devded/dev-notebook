@@ -54,3 +54,21 @@ Django supports modular layouts through several features:
 * **Template Inheritance (`{% extends %}`)**: Defines a master layout (like `base.html`) containing common headers and footers that child templates extend.
 * **Block tags (`{% block %}`)**: Allow child templates to override specific content sections.
 * **Include tag (`{% include %}`)**: Injects smaller reusable UI fragments (like a sidebar or navbar) across multiple pages.
+
+## How do you register a model with the Django admin site? <Badge type="tip" text="easy" />
+
+To register a model so it can be managed in the Django admin panel, import the model in your app's `admin.py` and call `admin.site.register()`:
+
+```python
+# admin.py
+from django.contrib import admin
+from .models import Article
+
+admin.site.register(Article)
+```
+Alternatively, you can use the `@admin.register()` decorator, which is cleaner when defining a custom `ModelAdmin` class:
+```python
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ("title", "created_at")
+```

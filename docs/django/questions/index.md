@@ -5,7 +5,7 @@ Interview questions and answers, grouped by topic. 30 sections.
 - [1. Django fundamentals and architecture](./01-django-fundamentals-and-architecture) — 12 questions
 - [2. Settings, configuration, and environments](./02-settings-configuration-and-environments) — 16 questions
 - [3. URL routing, views, and request lifecycle](./03-url-routing-views-and-request-lifecycle) — 11 questions
-- [4. Templates, forms, and admin](./04-templates-forms-and-admin) — 13 questions
+- [4. Templates, forms, and admin](./04-templates-forms-and-admin) — 14 questions
 - [5. Models and data modeling](./05-models-and-data-modeling) — 14 questions
 - [6. ORM querying](./06-orm-querying) — 12 questions
 - [7. Advanced ORM and query correctness](./07-advanced-orm-and-query-correctness) — 10 questions
