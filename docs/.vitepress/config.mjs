@@ -1,7 +1,9 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(
+  defineConfig({
   base: '/dev-notebook/',
   title: 'Dev Notebook',
   description: 'Interview cheatsheets & framework tutorials',
@@ -218,3 +220,4 @@ export default defineConfig({
     }
   }
 })
+)
