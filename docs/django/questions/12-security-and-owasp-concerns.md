@@ -39,3 +39,17 @@ Validate file type and size, store outside executable paths, use randomized name
 ## How do you keep dependencies secure?
 
 Pin dependencies, use lock files, scan with tools such as pip-audit or Snyk, monitor Django security releases, update regularly, and run automated tests before deployment. Avoid abandoned packages in security-critical paths.
+
+## How does Django handle Cross-Origin Resource Sharing (CORS) and why is it important? <Badge type="warning" text="medium" />
+
+CORS is a browser security mechanism that restricts cross-origin HTTP requests. Since Django has no built-in CORS middleware, you implement it using the third-party package `django-cors-headers`:
+1. Install it via pip: `pip install django-cors-headers`.
+2. Add it to `INSTALLED_APPS` and register `CorsMiddleware` near the top of the `MIDDLEWARE` setting.
+3. Configure allowed origins in `settings.py`:
+
+```python
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+]
+```

@@ -54,3 +54,27 @@ A standard Django project is split into a root configuration folder and separate
 ## Why is Django described as a loosely coupled framework? <Badge type="warning" text="medium" />
 
 Django's MVT (Model-View-Template) components are highly independent. The Model handles data storage and database definitions, the View manages business logic, and the Template handles the presentation layer. These layers communicate through clean interfaces, allowing developers to change or swap one component (e.g., swapping a database backend or template engine) with minimal impact on the others.
+
+## What is Django's contrib framework and what are some common built-in apps it provides? <Badge type="tip" text="easy" />
+
+Django's `django.contrib` package contains a collection of optional, pluggable, and reusable apps that ship out-of-the-box with the framework. Common contrib apps include:
+* `django.contrib.auth`: Authentication and permissions.
+* `django.contrib.admin`: Administrative database dashboard interface.
+* `django.contrib.sessions`: Session framework to store visitor state.
+* `django.contrib.contenttypes`: High-level database schema abstraction for model tracking.
+* `django.contrib.staticfiles`: Static file asset manager.
+
+## What is the purpose of Django's contenttypes framework? <Badge type="warning" text="medium" />
+
+The `django.contrib.contenttypes` application tracks all models installed in a Django project. It provides high-level generic relations, enabling a single model instance to link to any object in the system (Generic Foreign Keys). This is highly useful for building decoupled features like audit logs, comments, or tagging systems that attach to various unrelated models.
+
+```python
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
+
+class Comment(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey("content_type", "object_id")
+```

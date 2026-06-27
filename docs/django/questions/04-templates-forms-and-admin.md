@@ -71,4 +71,25 @@ Alternatively, you can use the `@admin.register()` decorator, which is cleaner w
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at")
+
+## How do you create and register custom template tags and filters in Django? <Badge type="warning" text="medium" />
+
+1. Create a `templatetags` directory inside your app (must contain an empty `__init__.py`).
+2. Create a Python file inside it (e.g., `my_custom_tags.py`).
+3. Instantiate a template register library, define your function, and register it:
+
+```python
+from django import template
+register = template.Library()
+
+@register.filter
+def lowercase_first(value):
+    return value[0].lower() + value[1:] if value else ""
+
+@register.simple_tag
+def current_year():
+    from datetime import datetime
+    return datetime.now().year
+```
+4. Load the library in your template using `{% load my_custom_tags %}` and use the custom tags/filters.
 ```

@@ -73,3 +73,20 @@ Use the `.using()` QuerySet method for ad-hoc database selection:
 # Force a write/read on the analytics DB
 LogEntry.objects.using("analytics").create(action="login")
 ```
+
+## How do you implement full-text search in a Django application? <Badge type="warning" text="medium" />
+
+If using PostgreSQL, Django has built-in integration through the `django.contrib.postgres.search` module. It exposes `SearchVector` (for multi-column indexing), `SearchQuery` (for user term parsing), and `SearchRank` (for relevance scoring).
+
+```python
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from .models import Article
+
+def search_articles(query_text):
+    vector = SearchVector("title", weight="A") + SearchVector("body", weight="B")
+    query = SearchQuery(query_text)
+    return Article.objects.annotate(
+        rank=SearchRank(vector, query)
+    ).filter(rank__gte=0.3).order_by("-rank")
+```
+For multi-engine setups, large data volumes, or advanced search features, teams typically integrate external search engines like Elasticsearch or Solr using Python integrations.
