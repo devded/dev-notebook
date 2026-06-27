@@ -39,3 +39,20 @@ Use a deleted_at timestamp or status field, default managers that hide deleted r
 ## What database metrics would you monitor for a Django service?
 
 Monitor query latency, slow queries, connection count, lock waits, deadlocks, transaction duration, replication lag, cache hit ratio, CPU, I/O, table bloat, index usage, and error rates.
+
+## How do you configure a Django project to connect to a relational database? <Badge type="tip" text="easy" />
+
+Database connections are configured in the `DATABASES` setting inside `settings.py`. You specify the engine backend, database name, host, port, user credentials, and options.
+
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "my_db",
+        "USER": "db_user",
+        "PASSWORD": "db_password",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+```

@@ -39,3 +39,20 @@ Multi-factor authentication requires an additional factor beyond password, such 
 ## How should password storage be handled in Django?
 
 Use Django's built-in password hashers and never store plain-text passwords. Passwords are salted and hashed with strong adaptive algorithms. Teams should monitor framework security releases and avoid custom password hashing.
+
+## What is a Django Superuser? <Badge type="tip" text="easy" />
+
+A Superuser is a user account that has all permissions enabled automatically (`is_superuser=True` and `is_staff=True`). Superusers can access the Django admin panel and perform any CRUD operations on any registered model without explicit permission setup.
+
+## How do you read and write cookies in a Django application? <Badge type="warning" text="medium" />
+
+Cookies are set on the `HttpResponse` object using `set_cookie()` and read from the `HttpRequest` object using the `COOKIES` dictionary.
+
+```python
+# Set a cookie in a view
+response = HttpResponse("Setting a cookie")
+response.set_cookie("user_theme", "dark", max_age=86400, secure=True, httponly=True)
+
+# Read a cookie in a view
+theme = request.COOKIES.get("user_theme", "light")
+```

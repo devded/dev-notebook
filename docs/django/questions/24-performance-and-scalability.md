@@ -39,3 +39,10 @@ Use rate limiting, throttling, timeouts, queue backpressure, circuit breakers, a
 ## What is graceful degradation?
 
 Graceful degradation means keeping critical functionality available when non-critical dependencies fail. For example, checkout should work even if recommendation widgets, analytics, or email previews are unavailable.
+
+## How do you implement database sharding in a Django application? <Badge type="danger" text="hard" />
+
+Database sharding splits data across multiple database instances to scale write throughput. Since Django has no out-of-the-box sharding middleware:
+1. Define shard databases in the `DATABASES` setting.
+2. Write a custom database router (`BaseDatabaseRouter`) with `db_for_read` and `db_for_write` logic to route queries to the correct shard based on partitioning criteria (e.g., tenant ID or user ID range).
+3. Alternatively, utilize third-party packages or partition tables at the PostgreSQL level using tools like Citus.
