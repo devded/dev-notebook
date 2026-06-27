@@ -39,3 +39,18 @@ manage.py is a command-line utility that sets the Django settings module and del
 ## How would you describe Django to a non-technical stakeholder?
 
 Django is a mature Python framework for building secure web applications quickly. It gives the engineering team prebuilt foundations for data, users, administration, and security so they can focus on product-specific logic.
+
+## What is the standard Django project directory structure and the role of key files? <Badge type="tip" text="easy" />
+
+A standard Django project is split into a root configuration folder and separate app directories. Key files include:
+* `manage.py`: Command-line utility to run commands (runserver, migrate, etc.).
+* `settings.py`: Core configuration (databases, installed apps, middleware).
+* `urls.py`: Root routing mapping URL patterns to views.
+* `wsgi.py` / `asgi.py`: Entry points for web servers (WSGI/ASGI).
+* `models.py`: Database schema definitions via Python classes.
+* `views.py`: Request-handling business logic.
+* `admin.py`: Django admin panel registration.
+
+## Why is Django described as a loosely coupled framework? <Badge type="warning" text="medium" />
+
+Django's MVT (Model-View-Template) components are highly independent. The Model handles data storage and database definitions, the View manages business logic, and the Template handles the presentation layer. These layers communicate through clean interfaces, allowing developers to change or swap one component (e.g., swapping a database backend or template engine) with minimal impact on the others.

@@ -39,3 +39,23 @@ Middleware is executed in order for requests and reverse order for responses. Or
 ## What settings would you review before deploying a Django app in Germany or the EU?
 
 Review DEBUG, SECRET_KEY, ALLOWED_HOSTS, CSRF_COOKIE_SECURE, SESSION_COOKIE_SECURE, SECURE_SSL_REDIRECT, HSTS, database encryption, logging of personal data, cookie consent, retention policies, and GDPR-related data processing responsibilities.
+
+## Why is it important to use a virtual environment for a Django project? <Badge type="tip" text="easy" />
+
+A virtual environment creates an isolated workspace containing project-specific dependencies. This prevents version conflicts between different Python projects on the same machine, ensures clean and reproducible deployments, and makes dependency management (via `pip`, `poetry`, etc.) predictable and secure.
+
+## What does the settings.py file do? <Badge type="tip" text="easy" />
+
+`settings.py` is the core configuration file of a Django project. It defines database settings, static/media file paths, installed apps, active middleware, security keys, logging formats, and internationalization preferences. It configuration governs how the application behaves in different deployment environments.
+
+## What is middleware in Django and how does it work? <Badge type="warning" text="medium" />
+
+Middleware is a framework of hooks that plug into Django's request/response processing cycle. It is a light, low-level plugin system for globally altering Django's input or output. Each middleware component processes the incoming request before it reaches the view, and the outgoing response before it is returned to the client.
+
+## What is the difference between MEDIA_ROOT and MEDIA_URL in Django settings? <Badge type="tip" text="easy" />
+
+`MEDIA_ROOT` is the absolute local file system path on the server where user-uploaded files are stored (e.g., images or documents). `MEDIA_URL` is the public URL prefix used in the browser to access those uploaded files (e.g., `/media/`).
+
+## What are static files in Django and how are they managed? <Badge type="tip" text="easy" />
+
+Static files are assets that do not change dynamically, such as CSS, JavaScript, images, and fonts. Django manages them using the `django.contrib.staticfiles` app. In development, Django serves them automatically. In production, developers run `python manage.py collectstatic` to gather all static assets into a single directory configured by `STATIC_ROOT`, which is then served by a web server (like Nginx) or a CDN.

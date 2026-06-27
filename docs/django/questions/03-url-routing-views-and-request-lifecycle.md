@@ -39,3 +39,15 @@ HttpResponse is the base response object returned by Django views. It contains c
 ## How would you handle a 404 in Django?
 
 Raise Http404 in a view or use helpers such as get_object_or_404. In production, configure custom 404 templates or handlers to avoid leaking internals and to provide a useful user experience.
+
+## What is the purpose of the render() shortcut function in Django? <Badge type="tip" text="easy" />
+
+The `render()` function combines a given template with a context dictionary containing data and returns a fully rendered `HttpResponse` object. It acts as a shortcut by handling template loading and context processing in a single line.
+
+```python
+from django.shortcuts import render
+
+def my_view(request):
+    context = {"message": "Hello World"}
+    return render(request, "my_template.html", context)
+```
