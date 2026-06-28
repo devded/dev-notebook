@@ -51,3 +51,8 @@ def my_view(request):
     context = {"message": "Hello World"}
     return render(request, "my_template.html", context)
 ```
+
+## What is the difference between reverse() and reverse_lazy(), and in what specific scenario must you use reverse_lazy()? <Badge type="tip" text="easy" />
+
+`reverse()` evaluates a URL immediately, while `reverse_lazy()` returns a lazy object that evaluates only when converted to a string. `reverse_lazy()` must be used when providing URLs as class attributes (e.g., `success_url` in Class-Based Views), because class attributes are evaluated when the file is imported, which is often before the URLconf has been fully loaded.
+

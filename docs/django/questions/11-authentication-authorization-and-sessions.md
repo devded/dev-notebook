@@ -109,3 +109,8 @@ graph TD
     Backend2 -->|Matches Credentials| ReturnUser
     Backend2 -->|Fails / Returns None| Fail[Raise Authentication Failure]
 ```
+
+## Why must AUTH_USER_MODEL be set before running the first migration, and what happens if you try to change it later? <Badge type="warning" text="medium" />
+
+`AUTH_USER_MODEL` tells Django which model represents the user. It must be set immediately because other apps (like `admin` and third-party packages) create foreign keys to it in their initial migrations. Changing it mid-project requires dropping tables, manually deleting migration history, or writing extremely complex schema migrations to migrate all foreign keys.
+

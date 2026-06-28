@@ -39,3 +39,12 @@ Flaky tests depend on timing, ordering, shared state, network calls, random data
 ## What testing expectations are common in big-company interviews?
 
 Interviewers expect you to discuss test pyramid trade-offs, regression tests for bugs, CI reliability, permission coverage, migration safety, contract testing, and how tests support refactoring rather than just increasing coverage percentage.
+
+## How do you reliably mock external API calls in your Django tests to prevent actual network requests? <Badge type="warning" text="medium" />
+
+You should never make real network requests in CI. You can use the `responses` library to intercept `requests` calls and return mock JSON, or use `unittest.mock.patch` to mock the internal service class or function that makes the call, ensuring deterministic and fast tests.
+
+## What are the advantages of using pytest-django over Django's standard unittest framework? <Badge type="warning" text="medium" />
+
+Pytest offers more concise assertions (just `assert x == y`), powerful fixture injection instead of complex class inheritance, better error reporting, and the ability to run subsets of tests easily. `pytest-django` adds features like `@pytest.mark.django_db` for automatic transaction rollback.
+

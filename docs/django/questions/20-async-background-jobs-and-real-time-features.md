@@ -39,3 +39,20 @@ Use Celery Beat, django-q, APScheduler, Kubernetes CronJobs, or cloud scheduler 
 ## How do you prevent multiple workers from running the same scheduled job concurrently?
 
 Use distributed locks, database advisory locks, unique job rows, scheduler singleton configuration, or idempotent task design. In Kubernetes or autoscaled environments, assume multiple instances can exist.
+
+## What are sync_to_async and async_to_sync (from asgiref), and when must you use them? <Badge type="danger" text="hard" />
+
+They are thread-safe wrappers for crossing the synchronous/asynchronous boundary. Use `sync_to_async` to call synchronous code (like Django ORM queries) from inside an async view without blocking the event loop. Use `async_to_sync` to call an async function from a synchronous view.
+
+## What is acks_late in Celery, and why is it important for idempotent tasks? <Badge type="danger" text="hard" />
+
+By default, Celery acknowledges a task as soon as it starts (acks_early). If the worker crashes mid-execution, the task is lost. Setting `acks_late=True` tells the worker to acknowledge only after the task finishes successfully. If a crash occurs, the task goes back to the queue. The task must be idempotent so it can safely be retried.
+
+## How do you implement a distributed lock for a Celery task to prevent concurrent execution across multiple workers? <Badge type="danger" text="hard" />
+
+You can implement a distributed lock using Redis and its `SETNX` (Set if Not eXists) operation. The task tries to acquire the lock upon starting and releases it upon completion or failure. This prevents scheduled tasks (like Celery Beat cron jobs) from overlapping if a previous run is still executing.
+
+## What are the pros and cons of using RabbitMQ versus Redis as a Celery broker? <Badge type="warning" text="medium" />
+
+RabbitMQ is a dedicated message broker with advanced routing, guarantees for message delivery, persistence, and backpressure handling. Redis is an in-memory datastore that is very fast and easy to set up, but it can lose messages on eviction or power loss, making it less reliable for critical background jobs compared to RabbitMQ.
+

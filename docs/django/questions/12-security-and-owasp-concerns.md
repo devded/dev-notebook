@@ -53,3 +53,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
 ]
 ```
+
+## What is Content Security Policy (CSP), and how can a Django application implement it? <Badge type="warning" text="medium" />
+
+CSP is an HTTP header that allows site administrators to declare approved sources of content (scripts, styles, images) that the browser may load, mitigating XSS attacks. In Django, it is typically implemented using the `django-csp` package, which provides a middleware and settings to define the policy.
+

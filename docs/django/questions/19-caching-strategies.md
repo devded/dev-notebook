@@ -39,3 +39,8 @@ Caching evaluated data can be useful, but caching lazy QuerySets is usually not 
 ## How do you monitor cache effectiveness?
 
 Track hit rate, miss rate, latency, evictions, memory usage, key cardinality, error rate, and downstream database load. A cache that hides bugs or leaks data is worse than no cache.
+
+## How do you use the Vary header (or @vary_on_headers) with Django's @cache_page to prevent caching issues? <Badge type="danger" text="hard" />
+
+`Vary` tells caches that the response depends on specific headers. If a view returns user-specific data, you must add `Vary: Cookie` (using `@vary_on_cookie` or `@vary_on_headers('Cookie')`). Without it, the caching layer might serve User A's cached private data to User B, leading to severe data leaks.
+

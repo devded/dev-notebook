@@ -122,3 +122,12 @@ DATABASES = {
     }
 }
 ```
+
+## How do you query and filter inside a JSONField in Django, and how do you index it for performance? <Badge type="warning" text="medium" />
+
+You query inside a JSONField using key lookups like `data__key__contains='value'` or `data__has_key='key'`. To index it for performance, especially for containment and key lookups, you should add a `GinIndex` on the field in the model's `Meta.indexes`.
+
+## How do you implement Full-Text Search natively in Django using PostgreSQL? <Badge type="danger" text="hard" />
+
+Django provides the `django.contrib.postgres.search` module. You use `SearchVector` to define the searchable text (combining multiple fields and weights), `SearchQuery` to parse the user's input, and `SearchRank` to order the results. For performance, you must create a `GinIndex` on the `SearchVector`.
+

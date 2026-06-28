@@ -39,3 +39,8 @@ Migrations can cause downtime, data loss, performance degradation, or rollback p
 ## How do you make migrations compatible with blue-green or rolling deployments?
 
 Use expand-and-contract changes: first add backward-compatible schema, then deploy code that handles both old and new fields, then backfill, then remove old schema in a later release. Avoid deploying code that requires a schema not yet available on all instances.
+
+## When and why would you use --fake or --fake-initial when running Django migrations? <Badge type="warning" text="medium" />
+
+`--fake` tells Django to mark a migration as applied in the `django_migrations` table without actually running the SQL. This is used to fix corrupted migration states or when manually altering a database. `--fake-initial` is used when adopting an existing legacy database into Django; it fakes the initial migration if the tables already exist.
+

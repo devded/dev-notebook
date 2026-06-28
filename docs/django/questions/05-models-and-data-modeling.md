@@ -75,3 +75,16 @@ Django supports three model inheritance styles:
 ## What are Django signals, and when should they be used? <Badge type="warning" text="medium" />
 
 Signals allow decoupled applications to get notified when actions occur elsewhere in the framework. Django provides built-in signals like `post_save`, `pre_save`, `post_delete`, and `pre_delete` that trigger receiver functions when model instances are modified. They should be used for cross-app coordination (e.g., creating a user profile whenever a new user is created), but avoided for core database updates because they can make code flow harder to trace and debug.
+
+## What are the operational and performance differences between Abstract Base Classes, Multi-table Inheritance, and Proxy Models? <Badge type="warning" text="medium" />
+
+Abstract Base Classes provide shared fields to child models without creating a database table for the base class. Multi-table Inheritance creates a table for the parent and each child, linking them with an implicit OneToOneField, which causes expensive SQL JOINs on every query. Proxy Models change Python behavior (like managers or ordering) but use the exact same database table as the original model.
+
+## When should you override a model's save() method versus using a pre_save or post_save signal? <Badge type="warning" text="medium" />
+
+Override `save()` when the logic is fundamentally tied to the object's persistence and should always happen (e.g., updating a computed field). Use signals when you need to decouple orthogonal logic (like sending an email or invalidating a cache) across different apps. However, remember that neither `save()` nor signals are triggered by `bulk_create` or `bulk_update`.
+
+## How do you implement a UUID primary key in Django, and what are its performance trade-offs compared to an AutoField? <Badge type="warning" text="medium" />
+
+You implement it by defining `id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)`. UUIDs are great for distributed systems and preventing ID enumeration. However, because UUIDv4 is random, it causes severe index fragmentation and slower insert performance in B-tree indexes compared to sequential `AutoField` integers.
+

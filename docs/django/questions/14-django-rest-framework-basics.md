@@ -39,3 +39,12 @@ DRF chooses a parser based on content type, such as JSONParser, FormParser, or M
 ## How does DRF render responses?
 
 DRF uses renderer classes, such as JSONRenderer or BrowsableAPIRenderer, based on content negotiation. Most production APIs primarily use JSON, but renderer configuration can be customized globally or per view.
+
+## When and how would you override to_representation() and to_internal_value() in a DRF serializer? <Badge type="danger" text="hard" />
+
+Override `to_representation()` to customize how a model instance is converted to a dictionary before being rendered (e.g., formatting dates or flattening nested structures). Override `to_internal_value()` to customize how incoming raw data is validated and converted into a python dict before `.save()` is called (e.g., converting a string to a related object instance).
+
+## How do you handle nested writable serializers in DRF? <Badge type="danger" text="hard" />
+
+DRF does not automatically support writable nested serializers because the semantics of creating/updating related objects are complex. You must override the `create()` and `update()` methods on the parent serializer, pop the nested data, save the parent instance, and then manually create or update the nested instances.
+

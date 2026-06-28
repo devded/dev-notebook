@@ -105,3 +105,16 @@ def my_view(request):
     messages.success(request, "Profile updated successfully.")
     return redirect("profile-detail")
 ```
+
+## How do you create custom template tags, and what is the difference between @register.simple_tag and @register.inclusion_tag? <Badge type="warning" text="medium" />
+
+Custom template tags encapsulate presentation logic. `@register.simple_tag` processes data and returns a string that is rendered directly in the template. `@register.inclusion_tag` processes data and renders a completely different HTML template fragment with that data, returning the rendered HTML. Inclusion tags are perfect for reusable UI components.
+
+## What is a FormSet, and when would you use an InlineFormSet? <Badge type="warning" text="medium" />
+
+A FormSet is a layer of abstraction for working with multiple forms on the same page, handling initialization, validation, and submission of the collection together. An `InlineFormSet` is a specific type of FormSet that handles related objects via a foreign key, useful for editing a parent object and its children (like an Order and its OrderItems) in a single view.
+
+## How do you optimize the Django Admin for tables with millions of rows that contain ForeignKey relationships? <Badge type="danger" text="hard" />
+
+By default, the Django Admin loads all related foreign keys into a `<select>` dropdown, which will time out or crash on millions of rows. Optimization involves using `raw_id_fields` (to display an input box with a lookup popup) or `autocomplete_fields` (to provide an async select2 search). Additionally, overriding `get_queryset` to use `select_related` and disabling expensive `list_filter`s are necessary.
+

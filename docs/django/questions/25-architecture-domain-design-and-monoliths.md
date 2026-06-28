@@ -45,3 +45,12 @@ State the context, constraints, options considered, trade-offs, decision, conseq
 "Fat Model, Skinny View" is a design principle where business logic, data validation, and database operations are placed in model classes (or manager methods) rather than view functions.
 * **Pros**: Promotes code reusability (logic can be shared between views, admin actions, and shell scripts), makes testing database logic simpler, and keeps views clean and readable.
 * **Cons**: Can lead to bloated, monolithic model classes that are hard to maintain, violate the Single Responsibility Principle, and create circular dependency issues. Modern applications often delegate this logic to service layers or domain service classes.
+
+## How does the m2m_changed signal differ from post_save, and why is it necessary? <Badge type="warning" text="medium" />
+
+Updating a Many-to-Many relationship (e.g., `user.groups.add(group)`) modifies a join table and does *not* trigger `pre_save` or `post_save` on the related models. `m2m_changed` is required to detect these changes. It fires multiple times with different `action` flags (like `pre_add`, `post_add`, `post_clear`).
+
+## How do you prevent Django signal handlers from falling into an infinite recursive loop? <Badge type="warning" text="medium" />
+
+If a `post_save` signal modifies the instance and calls `instance.save()`, it triggers the signal again endlessly. To prevent this, either use `update_fields=['field_name']` when saving (and check `update_fields` in the signal), disconnect and reconnect the signal around the save, or avoid saving the instance inside its own `post_save` handler by doing modifications in `pre_save` instead.
+

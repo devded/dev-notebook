@@ -39,3 +39,8 @@ Graceful shutdown lets workers finish active requests or tasks before exiting. I
 ## What would you include in a production runbook for Django?
 
 Include deployment steps, rollback steps, migrations policy, environment variables, operational dashboards, alert definitions, common failure modes, task queue operations, database procedures, and escalation contacts.
+
+## What is WhiteNoise, and how does it compare to serving static files via Nginx or a CDN? <Badge type="warning" text="medium" />
+
+WhiteNoise is a Python middleware that allows the WSGI/ASGI app to serve its own static files efficiently. While Nginx is more performant for raw file serving, WhiteNoise simplifies deployments on PaaS (like Heroku) or containerized setups without requiring a separate web server layer. A CDN is still recommended in front of WhiteNoise to cache the files globally.
+

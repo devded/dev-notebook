@@ -96,3 +96,12 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
 ```
+
+## What is a Python metaclass, and how does Django use them in models.Model? <Badge type="danger" text="hard" />
+
+A metaclass in Python is a class of a class that defines how a class behaves. Django uses `ModelBase` as the metaclass for `models.Model`. When a model class is parsed, `ModelBase` intercepts its creation, reads the defined field attributes (like `CharField`), and moves them into a `_meta` API (the `Options` class). This enables Django's ORM to map Python attributes to database columns magically.
+
+## How does Django's application registry work, and what typically causes the AppRegistryNotReady exception? <Badge type="danger" text="hard" />
+
+The application registry (`django.apps.apps`) is populated during Django's initialization sequence (`django.setup()`). It loads application configurations and models in a strict order. `AppRegistryNotReady` occurs when code tries to interact with models or the ORM before the setup phase completes, often caused by placing ORM queries or model imports at the root level of a module (like in `__init__.py` or global variables in `views.py`).
+
