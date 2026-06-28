@@ -10,7 +10,7 @@ Notes for the Spring Boot framework (Java).
 
 | Topic | Note |
 | --- | --- |
-| Language | Java (also Kotlin) |
+| Language | Java |
 | Core idea | Convention over configuration, auto-config |
 | Data | Spring Data JPA |
 | Build | Maven / Gradle |
