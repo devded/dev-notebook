@@ -5,6 +5,7 @@ Notes and interview prep for the Python language.
 ## Sections
 
 - [Cheatsheet](./cheatsheet) — quick syntax reference of core language features.
+- [Tutorials](./tutorials/) — long-form, example-driven guides with diagrams, one per topic.
 - [Interview Questions](./questions/) — 300+ Q&A grouped by topic.
 
 > Python frameworks have their own sections:
