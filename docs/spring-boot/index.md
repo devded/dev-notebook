@@ -4,7 +4,10 @@ Notes for the Spring Boot framework (Java).
 
 ## Sections
 
-- [Tutorial](./tutorial) — setup, REST controllers, JPA entities, services, config.
+- [Tutorials](./tutorials/) — 18 long-form, example-driven topics with diagrams, from fundamentals to system design.
+- [Interview Questions](./questions/) — 15 topic sets for drilling.
+- [Cheatsheets](./cheatsheets/01-annotations-and-di) — annotations & DI, JPA & transactions, REST/security/actuator.
+- [Quick tutorial](./tutorial) — a one-page setup primer (controllers, JPA, services, config).
 
 ## Quick facts
 

@@ -324,6 +324,31 @@ export default withMermaid(
           ]
         },
         {
+          text: 'Tutorials',
+          collapsed: false,
+          items: [
+            { text: 'All tutorials', link: '/spring-boot/tutorials/' },
+            { text: 'Fundamentals & Architecture', link: '/spring-boot/tutorials/fundamentals-and-architecture' },
+            { text: 'IoC & Dependency Injection', link: '/spring-boot/tutorials/ioc-and-dependency-injection' },
+            { text: 'Configuration & Profiles', link: '/spring-boot/tutorials/configuration-and-profiles' },
+            { text: 'Aspect-Oriented Programming', link: '/spring-boot/tutorials/aop' },
+            { text: 'Spring MVC & REST', link: '/spring-boot/tutorials/spring-mvc-and-rest' },
+            { text: 'Validation & Error Handling', link: '/spring-boot/tutorials/validation-and-error-handling' },
+            { text: 'WebFlux & Reactive', link: '/spring-boot/tutorials/spring-webflux-reactive' },
+            { text: 'Security & OAuth2', link: '/spring-boot/tutorials/spring-security-and-oauth2' },
+            { text: 'Spring Data JPA & Hibernate', link: '/spring-boot/tutorials/spring-data-jpa-and-hibernate' },
+            { text: 'Transactions & Connection Pooling', link: '/spring-boot/tutorials/transactions-and-connection-pooling' },
+            { text: 'Caching & Performance', link: '/spring-boot/tutorials/caching-and-performance' },
+            { text: 'Async & Scheduling', link: '/spring-boot/tutorials/async-and-scheduling' },
+            { text: 'Messaging (Kafka & RabbitMQ)', link: '/spring-boot/tutorials/messaging-kafka-and-rabbitmq' },
+            { text: 'Testing', link: '/spring-boot/tutorials/testing' },
+            { text: 'Microservices & Spring Cloud', link: '/spring-boot/tutorials/microservices-and-spring-cloud' },
+            { text: 'Actuator, Observability & Logging', link: '/spring-boot/tutorials/actuator-observability-and-logging' },
+            { text: 'Docker, Kubernetes & Deployment', link: '/spring-boot/tutorials/docker-kubernetes-and-deployment' },
+            { text: 'Advanced System Design', link: '/spring-boot/tutorials/advanced-system-design' }
+          ]
+        },
+        {
           text: 'Interview Questions',
           collapsed: false,
           items: [
