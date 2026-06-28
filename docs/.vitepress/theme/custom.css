@@ -32,9 +32,15 @@ details.custom-block.details:hover {
   border-color: var(--vp-c-brand-1);
 }
 
+details.custom-block.details:focus-within {
+  box-shadow: 0 0 0 2px var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+}
+
 details.custom-block.details summary {
   font-weight: 600;
   cursor: pointer;
   padding: 12px 16px;
   margin: 0;
+  outline: none; /* Remove default browser outline in favor of our custom block outline */
 }
