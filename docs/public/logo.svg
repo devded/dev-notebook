@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#bd34fe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#41d1ff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff41d1;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#bd34fe;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <path d="M 100 10 L 180 50 L 180 150 L 100 190 L 20 150 L 20 50 Z" fill="url(#grad1)" />
+  <path d="M 100 10 L 180 50 L 100 90 L 20 50 Z" fill="rgba(255,255,255,0.2)" />
+  <path d="M 100 90 L 180 50 L 180 150 L 100 130 Z" fill="url(#grad2)" />
+  <!-- Add a subtle inner server-like structure -->
+  <rect x="70" y="45" width="60" height="15" rx="4" fill="rgba(255,255,255,0.9)" transform="matrix(0.866, 0.5, -0.866, 0.5, 100, -25)" />
+  <rect x="70" y="70" width="60" height="15" rx="4" fill="rgba(255,255,255,0.9)" transform="matrix(0.866, 0.5, -0.866, 0.5, 100, -25)" />
+  <rect x="70" y="95" width="60" height="15" rx="4" fill="rgba(255,255,255,0.9)" transform="matrix(0.866, 0.5, -0.866, 0.5, 100, -25)" />
+</svg>

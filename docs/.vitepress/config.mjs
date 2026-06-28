@@ -10,6 +10,19 @@ export default withMermaid(
   lastUpdated: true,
   cleanUrls: true,
 
+  mermaid: {
+    theme: 'base',
+    themeVariables: {
+      fontFamily: 'Inter, sans-serif',
+      primaryColor: '#bd34fe',
+      primaryTextColor: '#ffffff',
+      primaryBorderColor: '#41d1ff',
+      lineColor: '#888888',
+      secondaryColor: '#242424',
+      tertiaryColor: '#1a1a1a'
+    }
+  },
+
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -38,7 +51,15 @@ export default withMermaid(
           collapsed: false,
           items: [
             { text: 'Overview', link: '/python/' },
-            { text: 'Cheatsheet', link: '/python/cheatsheet' }
+            {
+              text: 'Cheatsheets',
+              collapsed: true,
+              items: [
+                { text: 'Syntax & Data Structures', link: '/python/cheatsheets/01-syntax-and-data-structures' },
+                { text: 'Advanced Functions & OOP', link: '/python/cheatsheets/02-advanced-functions-and-oop' },
+                { text: 'Standard Library & Asyncio', link: '/python/cheatsheets/03-standard-library-and-async' }
+              ]
+            }
           ]
         },
         {
@@ -88,7 +109,15 @@ export default withMermaid(
           collapsed: false,
           items: [
             { text: 'Overview', link: '/java/' },
-            { text: 'Cheatsheet', link: '/java/cheatsheet' }
+            {
+              text: 'Cheatsheets',
+              collapsed: true,
+              items: [
+                { text: 'Core Syntax & OOP', link: '/java/cheatsheets/01-core-syntax-and-oop' },
+                { text: 'Collections & Streams API', link: '/java/cheatsheets/02-collections-and-streams' },
+                { text: 'Concurrency & JVM Internals', link: '/java/cheatsheets/03-concurrency-and-jvm' }
+              ]
+            }
           ]
         },
         {
@@ -110,7 +139,15 @@ export default withMermaid(
           collapsed: false,
           items: [
             { text: 'Overview', link: '/django/' },
-            { text: 'Tutorial', link: '/django/tutorial' }
+            {
+              text: 'Cheatsheets',
+              collapsed: true,
+              items: [
+                { text: 'Models & ORM Optimization', link: '/django/cheatsheets/01-models-and-orm' },
+                { text: 'Views, Templates & URLs', link: '/django/cheatsheets/02-views-templates-and-urls' },
+                { text: 'DRF & Security', link: '/django/cheatsheets/03-drf-and-security' }
+              ]
+            }
           ]
         },
         {
@@ -156,7 +193,16 @@ export default withMermaid(
           text: 'FastAPI',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/fastapi/' }
+            { text: 'Overview', link: '/fastapi/' },
+            {
+              text: 'Cheatsheets',
+              collapsed: true,
+              items: [
+                { text: 'Routing & Pydantic', link: '/fastapi/cheatsheets/01-routing-and-pydantic' },
+                { text: 'Dependencies & Security', link: '/fastapi/cheatsheets/02-dependencies-and-security' },
+                { text: 'Database & Deployment', link: '/fastapi/cheatsheets/03-database-and-deployment' }
+              ]
+            }
           ]
         },
         {
@@ -198,7 +244,37 @@ export default withMermaid(
           collapsed: false,
           items: [
             { text: 'Overview', link: '/spring-boot/' },
-            { text: 'Tutorial', link: '/spring-boot/tutorial' }
+            {
+              text: 'Cheatsheets',
+              collapsed: true,
+              items: [
+                { text: 'Annotations & DI', link: '/spring-boot/cheatsheets/01-annotations-and-di' },
+                { text: 'Data JPA & Transactions', link: '/spring-boot/cheatsheets/02-data-jpa-and-transactions' },
+                { text: 'REST, Security & Actuator', link: '/spring-boot/cheatsheets/03-rest-security-and-actuator' }
+              ]
+            }
+          ]
+        },
+        {
+          text: 'Interview Questions',
+          collapsed: false,
+          items: [
+            { text: "All topics", link: "/spring-boot/questions/" },
+            { text: "1. Spring Boot Fundamentals and Architecture", link: "/spring-boot/questions/01-spring-boot-fundamentals-and-architecture" },
+            { text: "2. IoC Container and Dependency Injection", link: "/spring-boot/questions/02-ioc-container-and-dependency-injection" },
+            { text: "3. Spring MVC and REST APIs", link: "/spring-boot/questions/03-spring-mvc-and-rest-apis" },
+            { text: "4. Spring Data JPA and Hibernate", link: "/spring-boot/questions/04-spring-data-jpa-and-hibernate" },
+            { text: "5. Database Transactions and Connection Pooling", link: "/spring-boot/questions/05-database-transactions-and-connection-pooling" },
+            { text: "6. Spring Security and OAuth2", link: "/spring-boot/questions/06-spring-security-and-oauth2" },
+            { text: "7. Microservices and Spring Cloud", link: "/spring-boot/questions/07-microservices-and-spring-cloud" },
+            { text: "8. Caching and Performance Optimization", link: "/spring-boot/questions/08-caching-and-performance-optimization" },
+            { text: "9. Messaging, Kafka, and RabbitMQ", link: "/spring-boot/questions/09-messaging-kafka-and-rabbitmq" },
+            { text: "10. Asynchronous Processing and Scheduling", link: "/spring-boot/questions/10-asynchronous-processing-and-scheduling" },
+            { text: "11. Testing: JUnit, Mockito, and Testcontainers", link: "/spring-boot/questions/11-testing-junit-mockito-and-testcontainers" },
+            { text: "12. Actuator, Observability, and Logging", link: "/spring-boot/questions/12-actuator-observability-and-logging" },
+            { text: "13. Docker, Kubernetes, and Deployment", link: "/spring-boot/questions/13-docker-kubernetes-and-deployment" },
+            { text: "14. Error Handling and Validation", link: "/spring-boot/questions/14-error-handling-and-validation" },
+            { text: "15. Advanced System Design and Enterprise Patterns", link: "/spring-boot/questions/15-advanced-system-design-and-enterprise-patterns" }
           ]
         }
       ]
