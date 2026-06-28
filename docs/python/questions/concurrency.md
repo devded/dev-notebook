@@ -4,6 +4,7 @@
 
 ## Threads vs processes vs asyncio? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Threads: good for I/O-bound, limited by GIL for CPU. Processes: true parallelism for CPU-bound, higher overhead. `asyncio`: single-threaded cooperative concurrency for high-volume I/O.
 
 ```python
@@ -14,9 +15,11 @@ async def main():
 
 asyncio.run(main())
 ```
+:::
 
 ## Explain async/await in Python <Badge type="danger" text="hard" />
 
+::: details View Answer
 `async def` defines a coroutine; `await` pauses it until an awaited coroutine completes, letting the event loop run other tasks meanwhile. It's single-threaded cooperative multitasking — great for I/O-bound work, no help for CPU-bound (GIL). `asyncio.gather()` runs coroutines concurrently.
 
 ```python
@@ -32,13 +35,17 @@ async def main():
 
 asyncio.run(main())
 ```
+:::
 
 ## What are coroutines and how do they differ from threads? <Badge type="danger" text="hard" />
 
+::: details View Answer
 Coroutines are functions that can suspend and resume at `await` points, scheduled cooperatively by an event loop in a **single thread** — switching only where you yield control. Threads are OS-scheduled and can be preempted anytime, needing locks for shared state and limited by the GIL for CPU work. Coroutines are lighter weight and avoid most race conditions, ideal for high-volume I/O.
+:::
 
 ## How does Python handle multithreading? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Via the `threading` module, but the GIL lets only one thread run Python bytecode at a time — so threads help **I/O-bound** work (one runs while others wait) but not CPU-bound work. Use `multiprocessing` for CPU parallelism.
 
 ```python
@@ -46,13 +53,17 @@ import threading
 t = threading.Thread(target=worker)
 t.start(); t.join()
 ```
+:::
 
 ## Difference between concurrency and parallelism? <Badge type="warning" text="medium" />
 
+::: details View Answer
 **Concurrency** = dealing with many tasks by interleaving progress (one core, switching). **Parallelism** = literally running tasks at the same time on multiple cores. `asyncio`/threads give concurrency; `multiprocessing` gives parallelism.
+:::
 
 ## What are asyncio tasks and events? <Badge type="danger" text="hard" />
 
+::: details View Answer
 A **Task** wraps a coroutine to run it concurrently on the event loop (`asyncio.create_task`). An **Event** (`asyncio.Event`) is a synchronization primitive coroutines can wait on until it's set.
 
 ```python
@@ -64,9 +75,11 @@ async def main():
 
 asyncio.run(main())
 ```
+:::
 
 ## Explain `Lock`, `RLock`, `Semaphore`, `Condition`, and `Event`. <Badge type="danger" text="hard" />
 
+::: details View Answer
 `threading` synchronization primitives:
 
 - **`Lock`** — basic mutual exclusion; one thread holds it at a time.
@@ -81,9 +94,11 @@ lock = threading.Lock()
 with lock:           # acquire/release safely
     shared += 1
 ```
+:::
 
 ## What is multiprocessing? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Running work in separate **processes**, each with its own Python interpreter and memory (and its own GIL) — so it achieves true CPU parallelism across cores. Use the `multiprocessing` module.
 
 ```python
@@ -91,13 +106,17 @@ from multiprocessing import Process
 p = Process(target=work)
 p.start(); p.join()
 ```
+:::
 
 ## How is multiprocessing different from multithreading (and when to use each)? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Threads share memory in one process and are limited by the GIL → good for **I/O-bound** work. Processes have separate memory and bypass the GIL → good for **CPU-bound** work, at the cost of higher overhead and pricier data sharing.
+:::
 
 ## How do processes communicate in Python? <Badge type="danger" text="hard" />
 
+::: details View Answer
 Since processes don't share memory, use IPC: `multiprocessing.Queue`/`Pipe` for message passing, `Value`/`Array` or `shared_memory` for shared state, or a `Manager` for shared objects.
 
 ```python
@@ -106,8 +125,22 @@ q = Queue()
 Process(target=lambda: q.put(42)).start()
 q.get()   # 42
 ```
+:::
 
 ## What is an event loop? <Badge type="warning" text="medium" />
 
+::: details View Answer
 The core of `asyncio` — a single-threaded scheduler that runs coroutines, pausing them at `await` points and resuming others while one waits on I/O. `asyncio.run()` starts and manages it.
+:::
 
+## How does `asyncio.TaskGroup` (Python 3.11+) improve upon `asyncio.gather`? <Badge type="warning" text="medium" />
+
+::: details View Answer
+`TaskGroup` is a modern context manager for managing groups of concurrent tasks. Unlike `asyncio.gather`, if one task in the `TaskGroup` fails with an exception, it safely and automatically cancels all other pending tasks in the group, preventing orphaned tasks and resource leaks, and raises a unified `ExceptionGroup`.
+:::
+
+## Are lists and dictionaries inherently thread-safe in Python? <Badge type="warning" text="medium" />
+
+::: details View Answer
+Yes and no. Because of the Global Interpreter Lock (GIL), individual bytecodes are atomic, making operations like `list.append()` or `dict.get()` thread-safe. However, composite operations (like `if key not in d: d[key] = val`) are **not** thread-safe. Multiple threads executing composite operations can be interrupted midway, requiring a `threading.Lock` for safety.
+:::

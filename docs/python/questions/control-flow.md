@@ -5,6 +5,7 @@
 
 ## Explain `if`, `elif`, and `else`. <Badge type="tip" text="easy" />
 
+::: details View Answer
 `if` runs a block when its condition is truthy; `elif` adds more conditions checked in order; `else` runs when none matched. Only the first matching branch executes.
 
 ```python
@@ -15,9 +16,11 @@ elif score >= 80:
 else:
     grade = "C"
 ```
+:::
 
 ## What is the `for...else` construct? <Badge type="warning" text="medium" />
 
+::: details View Answer
 The `else` block after a `for` loop runs **only if the loop finished without hitting `break`** — handy for search loops.
 
 ```python
@@ -28,9 +31,11 @@ for n in nums:
 else:
     print("not found")   # runs only if no break
 ```
+:::
 
 ## What is the `while...else` construct? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Same idea: the `else` runs when the `while` condition becomes false normally, but is skipped if the loop is `break`-ed out of.
 
 ```python
@@ -41,9 +46,11 @@ while attempts < 3:
 else:
     print("locked out")   # only if never broke
 ```
+:::
 
 ## What mistakes happen when modifying a collection while iterating it? <Badge type="danger" text="hard" />
 
+::: details View Answer
 Adding/removing items from a list or dict *during* iteration can skip elements or raise `RuntimeError: dictionary changed size during iteration`. Iterate over a **copy**, or build a new collection.
 
 ```python
@@ -58,3 +65,4 @@ for k in list(d):                            # iterate a copy of keys
     if drop(k):
         del d[k]
 ```
+:::

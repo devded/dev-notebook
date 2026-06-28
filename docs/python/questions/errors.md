@@ -4,6 +4,7 @@
 
 ## What's the best way to handle exceptions? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Use `try`/`except` and catch **specific** exceptions rather than a bare `except`. The full structure is `try` → `except` (per error type) → `else` (runs if no error) → `finally` (always runs, ideal for cleanup). Reserve exceptions for exceptional cases, not normal flow control.
 
 ```python
@@ -21,9 +22,11 @@ def divide(a, b):
     finally:
         print("Finishing up…")  # always runs
 ```
+:::
 
 ## When and how should you use context managers? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Context managers handle resource setup and cleanup automatically via the `with` statement, implementing `__enter__` and `__exit__`. Cleaner than `try`/`finally` and the cleanup still runs if an exception occurs — ideal for files, DB connections, locks.
 
 ```python
@@ -42,9 +45,11 @@ with DatabaseConnection("localhost") as db:
     print("doing work")
 # connection closed automatically here
 ```
+:::
 
 ## How do you write your own context manager? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Two ways. **Class-based**: implement `__enter__`/`__exit__` (return `True` from `__exit__` to suppress an exception, `False` to propagate). **Generator-based**: decorate a generator with `@contextlib.contextmanager` and `yield` the resource inside a `try/finally`.
 
 ```python
@@ -70,13 +75,17 @@ def open_file(name):
 with open_file("data.txt") as f:
     content = f.read()
 ```
+:::
 
 ## What are the built-in exceptions? <Badge type="tip" text="easy" />
 
+::: details View Answer
 Python ships a hierarchy rooted at `BaseException`. Common ones: `ValueError`, `TypeError`, `KeyError`, `IndexError`, `AttributeError`, `FileNotFoundError`, `ZeroDivisionError`, `RuntimeError`, `StopIteration`. Catch specific ones, not bare `Exception`.
+:::
 
 ## What is `raise` used for? <Badge type="tip" text="easy" />
 
+::: details View Answer
 To deliberately trigger an exception — to signal an error, re-raise a caught one, or chain with `from`.
 
 ```python
@@ -89,9 +98,11 @@ try:
 except KeyError as e:
     raise RuntimeError("lookup failed") from e   # chaining
 ```
+:::
 
 ## How do you handle multiple exceptions? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Group types in a tuple in one `except`, or use several `except` clauses for different handling.
 
 ```python
@@ -102,9 +113,11 @@ except (ValueError, TypeError) as e:   # same handling
 except KeyError:
     print("missing key")
 ```
+:::
 
 ## What's the difference between try-except and try-finally? <Badge type="tip" text="easy" />
 
+::: details View Answer
 `try`/`except` **handles** an error so the program continues. `try`/`finally` doesn't handle anything — `finally` just guarantees cleanup runs whether or not an exception propagates. They're often combined.
 
 ```python
@@ -113,13 +126,17 @@ try:
 finally:
     f.close()      # always runs, even if an exception bubbles up
 ```
+:::
 
 ## What is an exception? <Badge type="tip" text="easy" />
 
+::: details View Answer
 An event that disrupts normal program flow at runtime — e.g. dividing by zero or a missing key. Python raises an exception object; if uncaught, it propagates up and crashes the program with a traceback.
+:::
 
 ## Syntax errors vs runtime exceptions? <Badge type="tip" text="easy" />
 
+::: details View Answer
 A **syntax error** is invalid code the parser rejects before anything runs — it can't execute at all. A **runtime exception** occurs during execution on otherwise-valid code (e.g. `ZeroDivisionError`) and can be caught with `try`/`except`.
 
 ```python
@@ -131,9 +148,11 @@ try:
 except ZeroDivisionError:
     pass
 ```
+:::
 
 ## How do you create a custom exception? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Subclass `Exception` (or a more specific built-in). Add attributes if you need to carry context.
 
 ```python
@@ -144,9 +163,11 @@ class InsufficientFundsError(Exception):
 
 raise InsufficientFundsError(50)
 ```
+:::
 
 ## Why is catching a generic `Exception` bad practice? <Badge type="warning" text="medium" />
 
+::: details View Answer
 A broad `except Exception:` (or bare `except:`) hides bugs, swallows errors you didn't anticipate, and makes debugging hard — it can even catch things you meant to let propagate. Catch the **specific** exceptions you can handle; re-raise the rest.
 
 ```python
@@ -159,3 +180,4 @@ try: risky()
 except (ValueError, KeyError) as e:
     log.warning("handled: %s", e)
 ```
+:::

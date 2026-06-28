@@ -4,6 +4,7 @@
 
 ## Pros and cons of common data structures? <Badge type="warning" text="medium" />
 
+::: details View Answer
 | Structure | Strengths | Weaknesses |
 | --- | --- | --- |
 | Array/list | O(1) index, cache-friendly | O(n) insert/delete in middle |
@@ -13,18 +14,24 @@
 | Hash table | O(1) avg lookup/insert | unordered, collisions, memory |
 | Tree (BST/heap) | O(log n) ordered ops | balancing needed |
 | Graph | models relationships | traversal complexity |
+:::
 
 ## What is Big-O notation and why does it matter? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Big-O describes how an algorithm's time/space grows with input size `n`, ignoring constants — letting you compare scalability independent of hardware. Common: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ).
+:::
 
 ## Time complexities of searching and sorting? <Badge type="warning" text="medium" />
 
+::: details View Answer
 - **Linear search** O(n); **binary search** O(log n) (sorted data).
 - **Bubble/insertion/selection** O(n²); **merge/heap sort** O(n log n); **quicksort** O(n log n) avg, O(n²) worst; Python's **Timsort** O(n log n).
+:::
 
 ## DFS vs BFS — when to use each? <Badge type="danger" text="hard" />
 
+::: details View Answer
 **DFS** (depth-first, stack/recursion) goes deep first — good for path existence, topological sort, cycle detection; less memory on deep graphs. **BFS** (breadth-first, queue) explores level by level — finds the **shortest path** in unweighted graphs.
 
 ```python
@@ -37,13 +44,17 @@ def bfs(graph, start):
             if nxt not in seen:
                 seen.add(nxt); q.append(nxt)
 ```
+:::
 
 ## Recursion vs iteration — when is each preferable? <Badge type="warning" text="medium" />
 
+::: details View Answer
 **Recursion** is cleaner for naturally recursive problems (trees, divide-and-conquer) but risks stack overflow and call overhead. **Iteration** is more memory-efficient and often faster. Python has no tail-call optimization and a recursion limit (~1000), so prefer iteration for deep/linear work.
+:::
 
 ## How do you reverse a linked list? <Badge type="warning" text="medium" />
 
+::: details View Answer
 Iteratively re-point each node's `next` to the previous node.
 
 ```python
@@ -53,9 +64,11 @@ def reverse(head):
         head.next, prev, head = prev, head, head.next
     return prev   # new head
 ```
+:::
 
 ## How do you implement an LRU cache? <Badge type="danger" text="hard" />
 
+::: details View Answer
 An `OrderedDict` gives O(1) get/put while tracking recency; evict the oldest when full.
 
 ```python
@@ -81,3 +94,4 @@ class LRUCache:
 ```
 
 (For function memoization, `functools.lru_cache` does this for you.)
+:::
