@@ -1,4 +1,4 @@
-agy# Spring Boot
+# Spring Boot
 
 Notes for the Spring Boot framework (Java).
 

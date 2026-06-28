@@ -99,7 +99,15 @@ export default withMermaid(
             { text: "System Design & Scalability", link: "/python/questions/system-design" },
             { text: "Cloud & Monitoring", link: "/python/questions/cloud-monitoring" },
             { text: "Behavioral & HR", link: "/python/questions/behavioral" },
-            { text: "Questions by Role", link: "/python/questions/by-role" }
+            { text: "Questions by Role", link: "/python/questions/by-role" },
+            { text: "Message Brokers (Kafka)", link: "/python/questions/kafka" },
+            { text: "Message Brokers (RabbitMQ)", link: "/python/questions/rabbitmq" },
+            { text: "Task Queues (Celery)", link: "/python/questions/celery" },
+            { text: "Senior Backend Architecture", link: "/python/questions/senior-backend" },
+            { text: "Redis & Advanced Caching", link: "/python/questions/redis-caching" },
+            { text: "Advanced PostgreSQL", link: "/python/questions/postgresql-advanced" },
+            { text: "API Paradigms (gRPC/GraphQL)", link: "/python/questions/api-paradigms" },
+            { text: "Elasticsearch & Search", link: "/python/questions/elasticsearch" }
           ]
         }
       ],
