@@ -95,7 +95,9 @@ export default withMermaid(
             { text: "Modern Python (3.11+)", link: "/python/questions/modern-python" },
             { text: "Security & Best Practices", link: "/python/questions/security" },
             { text: "Algorithms & Data Structures", link: "/python/questions/algorithms" },
-            { text: "Design Patterns", link: "/python/questions/design-patterns" },
+            { text: "Creational Patterns", link: "/python/questions/patterns-creational" },
+            { text: "Structural Patterns", link: "/python/questions/patterns-structural" },
+            { text: "Behavioral Patterns", link: "/python/questions/patterns-behavioral" },
             { text: "System Design & Scalability", link: "/python/questions/system-design" },
             { text: "Cloud & Monitoring", link: "/python/questions/cloud-monitoring" },
             { text: "Behavioral & HR", link: "/python/questions/behavioral" },
@@ -243,6 +245,15 @@ export default withMermaid(
           items: [
             { text: 'Overview', link: '/flask/' },
             { text: 'Tutorial', link: '/flask/tutorial' }
+          ]
+        },
+        {
+          text: 'Interview Questions',
+          collapsed: false,
+          items: [
+            { text: "1. Flask Fundamentals & Context", link: "/flask/questions/01-fundamentals-and-context" },
+            { text: "2. ORM, SQLAlchemy & Extensions", link: "/flask/questions/02-orm-and-extensions" },
+            { text: "3. Architecture, Blueprints & Deployment", link: "/flask/questions/03-architecture-and-deployment" }
           ]
         }
       ],
