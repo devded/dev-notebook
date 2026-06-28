@@ -2,80 +2,126 @@
 
 ## How do you define a basic GET endpoint in FastAPI?
 
+::: details View Answer
 Use a path operation decorator such as `@app.get('/items')` above a function. The function return value is automatically serialized to JSON unless a custom response is returned.
+:::
 
 ## How are path parameters declared?
 
+::: details View Answer
 Path parameters are declared in the URL template and function signature, for example `/users/{user_id}` with `user_id: int`. FastAPI validates and converts the value based on the type hint.
+:::
 
 ## How are query parameters declared?
 
+::: details View Answer
 Any function parameter not present in the path is treated as a query parameter by default. For example, `limit: int = 10` becomes an optional query parameter with a default value.
+:::
 
 ## What is the difference between required and optional query parameters?
 
+::: details View Answer
 A parameter without a default value is required. A parameter with a default value or typed as `str | None = None` is optional.
+:::
 
 ## How do you add validation to query parameters?
 
+::: details View Answer
 Use `Query()` with constraints such as `min_length`, `max_length`, `ge`, `le`, `pattern`, and descriptions. This validation is reflected in OpenAPI documentation.
+:::
 
 ## How do you add validation to path parameters?
 
+::: details View Answer
 Use `Path()` with constraints such as `gt`, `ge`, `lt`, and `le`. Path parameters are always required because they are part of the route.
+:::
 
 ## How do you accept request headers?
 
+::: details View Answer
 Declare a parameter using `Header()`, for example `user_agent: str | None = Header(default=None)`. FastAPI handles header name conversion, including hyphenated names.
+:::
 
 ## How do you accept cookies?
 
+::: details View Answer
 Declare a parameter using `Cookie()`. This is useful for session IDs, CSRF tokens, or feature flags, although stateless token auth is often preferred for APIs.
+:::
 
 ## How do you receive a JSON request body?
 
+::: details View Answer
 Declare a parameter typed as a Pydantic model. FastAPI parses the body as JSON, validates it, and gives your function a model instance.
+:::
 
 ## How do you receive multiple body parameters?
 
+::: details View Answer
 Declare multiple parameters with `Body()`, or wrap them into a single Pydantic request model. For enterprise APIs, a single explicit request model is usually clearer.
+:::
 
 ## How do you upload files in FastAPI?
 
+::: details View Answer
 Use `UploadFile` with `File()`. `UploadFile` is preferred for large files because it provides a file-like interface and avoids loading the entire file into memory at once.
+:::
 
 ## What is the difference between `bytes` and `UploadFile` for file uploads?
 
+::: details View Answer
 `bytes` reads the entire uploaded file into memory. `UploadFile` streams via a spooled temporary file and exposes metadata like filename and content type.
+:::
 
 ## How do you support form data?
 
+::: details View Answer
 Use `Form()` parameters. It is commonly used for OAuth2 password flows or compatibility with browser form submissions.
+:::
 
 ## How do you return a custom status code?
 
+::: details View Answer
 Set `status_code` in the decorator, for example `@app.post('/items', status_code=201)`, or return a `Response`/`JSONResponse` with an explicit status code.
+:::
 
 ## How do you redirect from a FastAPI endpoint?
 
+::: details View Answer
 Return `RedirectResponse(url='...')`. Use appropriate status codes such as 302 for temporary redirects or 307/308 when preserving the method matters.
+:::
 
 ## How do you stream a response?
 
+::: details View Answer
 Return `StreamingResponse` with an iterator or async iterator. This is useful for large downloads, server-generated files, or incremental AI output.
+:::
 
 ## How do you serve static files?
 
+::: details View Answer
 Mount `StaticFiles` at a path, such as `app.mount('/static', StaticFiles(directory='static'), name='static')`. In production, static files are often better served by a CDN or reverse proxy.
+:::
 
 ## How does FastAPI choose whether a parameter is path, query, body, header, or cookie?
 
+::: details View Answer
 FastAPI uses the path template, parameter type, default marker classes like `Query`, `Body`, `Header`, and whether the type is a Pydantic model. Pydantic models are usually interpreted as request bodies.
+:::
 
 ## What is route ordering, and why can it matter?
 
+::: details View Answer
 More specific routes should be registered before conflicting dynamic routes. For example, `/users/me` should appear before `/users/{user_id}` to avoid interpreting `me` as a user ID.
+:::
 
 ## How would you design route naming and versioning for a large company API?
 
+::: details View Answer
 Use consistent resource naming, plural nouns, clear HTTP methods, and version prefixes such as `/api/v1`. For large systems, route modules should map to domains and avoid leaking internal database structure.
+:::
+
+## How do you implement Server-Sent Events (SSE) in FastAPI for real-time updates?
+
+::: details View Answer
+You can stream continuous, real-time data from a generator by returning a `StreamingResponse(generator(), media_type='text/event-stream')` or by using the third-party `sse-starlette` package for a more robust implementation.
+:::
