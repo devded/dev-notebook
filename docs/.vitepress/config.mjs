@@ -180,15 +180,45 @@ export default withMermaid(
           ]
         },
         {
+          text: 'Tutorials',
+          collapsed: false,
+          items: [
+            { text: 'All tutorials', link: '/java/tutorials/' },
+            { text: 'Basics & Syntax', link: '/java/tutorials/basics' },
+            { text: 'Core Language & Modern Java', link: '/java/tutorials/core-language' },
+            { text: 'OOP & Design', link: '/java/tutorials/oop-design' },
+            { text: 'Generics', link: '/java/tutorials/generics' },
+            { text: 'Exceptions & Error Handling', link: '/java/tutorials/exceptions' },
+            { text: 'Strings & Text', link: '/java/tutorials/strings' },
+            { text: 'Collections Framework', link: '/java/tutorials/collections' },
+            { text: 'Streams & Functional', link: '/java/tutorials/streams-functional' },
+            { text: 'Concurrency & Multithreading', link: '/java/tutorials/concurrency' },
+            { text: 'Memory, JVM & GC', link: '/java/tutorials/memory-jvm' },
+            { text: 'I/O, Files & NIO.2', link: '/java/tutorials/io-nio' },
+            { text: 'Date & Time API', link: '/java/tutorials/datetime' },
+            { text: 'Reflection & Annotations', link: '/java/tutorials/reflection-annotations' },
+            { text: 'Design Patterns', link: '/java/tutorials/design-patterns' }
+          ]
+        },
+        {
           text: 'Interview Questions',
           collapsed: false,
           items: [
             { text: "All topics", link: "/java/questions/" },
-            { text: "Core Language", link: "/java/questions/core-language" },
-            { text: "Memory & JVM", link: "/java/questions/memory-jvm" },
-            { text: "Collections", link: "/java/questions/collections" },
+            { text: "Basics & Syntax", link: "/java/questions/basics" },
+            { text: "Core Language & Modern Java", link: "/java/questions/core-language" },
             { text: "OOP & Design", link: "/java/questions/oop-design" },
-            { text: "Concurrency", link: "/java/questions/concurrency" }
+            { text: "Generics", link: "/java/questions/generics" },
+            { text: "Exceptions & Error Handling", link: "/java/questions/exceptions" },
+            { text: "Strings & Text", link: "/java/questions/strings" },
+            { text: "Collections", link: "/java/questions/collections" },
+            { text: "Streams & Functional", link: "/java/questions/streams-functional" },
+            { text: "Concurrency", link: "/java/questions/concurrency" },
+            { text: "Memory & JVM", link: "/java/questions/memory-jvm" },
+            { text: "I/O, Files & NIO.2", link: "/java/questions/io-nio" },
+            { text: "Date & Time API", link: "/java/questions/datetime" },
+            { text: "Reflection & Annotations", link: "/java/questions/reflection-annotations" },
+            { text: "Design Patterns", link: "/java/questions/design-patterns" }
           ]
         }
       ],

@@ -2,13 +2,29 @@
 
 Questions grouped by topic. Pick a section from the sidebar, or jump in:
 
-- [Core Language](./core-language) — equality, strings, keywords, exceptions
-- [Memory & JVM](./memory-jvm) — heap/stack, GC, JVM/JRE/JDK
-- [Collections](./collections) — List, Map, Set internals
-- [OOP & Design](./oop-design) — classes, interfaces, principles
-- [Concurrency](./concurrency) — threads, synchronization
+**Language core**
+- [Basics & Syntax](./basics) — JDK/JRE/JVM, primitives, `var`, value vs reference
+- [Core Language & Modern Java](./core-language) — records, sealed, pattern matching, enums
+- [OOP & Design](./oop-design) — classes, interfaces, SOLID principles
+- [Generics](./generics) — wildcards, PECS, type erasure
+- [Exceptions & Error Handling](./exceptions) — checked vs unchecked, try-with-resources
+- [Strings & Text](./strings) — immutability, String pool, regex, text blocks
 
-> Need the quick syntax reference instead? See the [Java Cheatsheet](../cheatsheet).
+**Data & functional**
+- [Collections](./collections) — List, Map, Set internals
+- [Streams & Functional](./streams-functional) — lambdas, Stream API, Collectors
+
+**Runtime & platform**
+- [Concurrency](./concurrency) — threads, JMM, executors, virtual threads
+- [Memory & JVM](./memory-jvm) — heap/stack, GC, JVM internals
+- [I/O, Files & NIO.2](./io-nio) — streams, `java.nio.file`, serialization
+- [Date & Time API](./datetime) — `java.time`, zones, formatting
+
+**Advanced**
+- [Reflection & Annotations](./reflection-annotations) — runtime inspection, proxies, custom annotations
+- [Design Patterns](./design-patterns) — GoF patterns the modern-Java way
+
+> Prefer learning first? See the [Java Tutorials](../tutorials/). Need the quick syntax reference? See the [Java Cheatsheet](../cheatsheet).
 
 ---
 
