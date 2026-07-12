@@ -112,6 +112,7 @@ docker ps
 # Show ALL containers (including stopped ones)
 docker ps -a
 
+```bash{v-pre}
 # Custom output format using Go templates
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
@@ -129,10 +130,10 @@ docker inspect --format '{{.State.ExitCode}}' web
 
 ::: tip Go template cheat sheet
 `docker inspect` output is JSON. Common paths:
-- `{{.State.Status}}` — running, exited, paused
-- `{{.Config.Env}}` — environment variables
-- `{{.HostConfig.Memory}}` — memory limit in bytes
-- `{{.NetworkSettings.Networks.bridge.IPAddress}}` — IP on bridge network
+- <code v-pre>{{.State.Status}}</code> — running, exited, paused
+- <code v-pre>{{.Config.Env}}</code> — environment variables
+- <code v-pre>{{.HostConfig.Memory}}</code> — memory limit in bytes
+- <code v-pre>{{.NetworkSettings.Networks.bridge.IPAddress}}</code> — IP on bridge network
 :::
 
 ## Logs
@@ -307,7 +308,7 @@ By default, a container can consume all available host CPU and memory. In produc
 (and even in development), you should set limits to prevent a runaway process from
 starving the host.
 
-```bash
+```bash{v-pre}
 # Limit to 512 MB of RAM and 1.5 CPU cores
 docker run -d \
   --memory 512m \          # Hard memory limit
