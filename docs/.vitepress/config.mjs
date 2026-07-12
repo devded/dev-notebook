@@ -26,6 +26,7 @@ export default withMermaid(
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Cheatsheets', link: '/cheatsheet/' },
       {
         text: 'Languages',
         items: [
@@ -41,10 +42,27 @@ export default withMermaid(
           { text: 'Flask', link: '/flask/' },
           { text: 'Spring Boot', link: '/spring-boot/' }
         ]
+      },
+      {
+        text: 'DevOps',
+        items: [
+          { text: 'Docker', link: '/docker/' }
+        ]
       }
     ],
 
     sidebar: {
+      '/cheatsheet/': [
+        {
+          text: 'Cheatsheets',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/cheatsheet/' },
+            { text: 'DSA Master Cheatsheet', link: '/cheatsheet/dsa' },
+            { text: 'Networking Abbreviations', link: '/cheatsheet/networking' }
+          ]
+        }
+      ],
       '/python/': [
         {
           text: 'Python',
@@ -333,6 +351,39 @@ export default withMermaid(
             { text: "1. Flask Fundamentals & Context", link: "/flask/questions/01-fundamentals-and-context" },
             { text: "2. ORM, SQLAlchemy & Extensions", link: "/flask/questions/02-orm-and-extensions" },
             { text: "3. Architecture, Blueprints & Deployment", link: "/flask/questions/03-architecture-and-deployment" }
+          ]
+        }
+      ],
+      '/docker/': [
+        {
+          text: 'Docker',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/docker/' }
+          ]
+        },
+        {
+          text: 'Tutorials',
+          collapsed: false,
+          items: [
+            { text: 'All tutorials', link: '/docker/tutorials/' },
+            { text: 'Introduction & Architecture', link: '/docker/tutorials/introduction-and-architecture' },
+            { text: 'Running Containers', link: '/docker/tutorials/running-containers' },
+            { text: 'Images & Dockerfiles', link: '/docker/tutorials/images-and-dockerfiles' },
+            { text: 'Building & Optimizing', link: '/docker/tutorials/building-and-optimizing' },
+            { text: 'Docker Networking', link: '/docker/tutorials/networking' },
+            { text: 'Volumes & Storage', link: '/docker/tutorials/volumes-and-storage' },
+            { text: 'Compose Fundamentals', link: '/docker/tutorials/compose-fundamentals' },
+            { text: 'Compose Networking & Storage', link: '/docker/tutorials/compose-networking-and-storage' },
+            { text: 'Advanced Compose', link: '/docker/tutorials/advanced-compose' },
+            { text: 'Security & Hardening', link: '/docker/tutorials/security-and-hardening' },
+            { text: 'Logging & Monitoring', link: '/docker/tutorials/logging-and-monitoring' },
+            { text: 'CI/CD with Docker', link: '/docker/tutorials/cicd-with-docker' },
+            { text: 'Troubleshooting & Debugging', link: '/docker/tutorials/troubleshooting-and-debugging' },
+            { text: 'Docker Internals', link: '/docker/tutorials/docker-internals' },
+            { text: 'BuildKit & Multi-Architecture', link: '/docker/tutorials/buildkit-and-multi-arch' },
+            { text: 'Orchestration & Beyond', link: '/docker/tutorials/orchestration-and-beyond' },
+            { text: 'Real-World Projects', link: '/docker/tutorials/real-world-projects' }
           ]
         }
       ],

@@ -41,6 +41,10 @@ features:
     title: Flask
     details: Understand micro-framework fundamentals, lightweight routing, and minimal dependency API development.
     link: /flask/
+  - icon: 🐳
+    title: Docker
+    details: Master containerization from zero to production — Dockerfiles, Compose stacks, networking, security, and CI/CD.
+    link: /docker/
   - icon: 🔎
     title: Lightning Fast Search
     details: Instantly jump to any question or topic across the entire notebook using the built-in full-text local search.
